@@ -9,7 +9,7 @@ class IndexPage extends React.Component {
     return (
       <div>
          <PictureContainer></PictureContainer>
-         <div>122222333</div>
+         
       </div>
       );
   }

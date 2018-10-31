@@ -1,7 +1,14 @@
 import React , { Component } from 'react';
 import { connect } from 'dva';
-import styles from './index.css';
+import styles from './index.less';
 import PictureBox from '../../components/PictureBox';
+import Masonry from 'react-masonry-component';
+
+const masonryOptions = {
+    transitionDuration: 0
+};
+
+const imagesLoadedOptions = { background: '.my-bg-image-el' }
 
 class PictureContainer extends React.Component {
   constructor(props) {
@@ -21,7 +28,7 @@ class PictureContainer extends React.Component {
     let imgBox;
     if(this.props.data) {
       console.log(this.props.data[0].key);
-      imgBox = this.props.data.map( (v,k) => (<PictureBox picSrc={v.key}></PictureBox>))
+      imgBox = this.props.data.map( (v,k) => (<PictureBox key={v.key} picSrc={v.key}></PictureBox>))
       console.log(imgBox);
     }
     
@@ -29,9 +36,18 @@ class PictureContainer extends React.Component {
 
     // console.log('dddd');
     return (
-      <div>
-          <div>111111</div>
-          {imgBox}
+      <div className={styles.picWaterFallBox}>
+          <Masonry
+            className={'my-gallery-class'} // default ''
+            elementType={'div'} // default 'div'
+            options={masonryOptions} // default {}
+            disableImagesLoaded={false} // default false
+            updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
+            imagesLoadedOptions={imagesLoadedOptions} // default {}
+          >
+            {imgBox}
+        </Masonry>
+          
       </div>
 
       );
