@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'dva';
 import styles from './IndexPage.css';
-import PictureBox from '../PictureBox';
+import PictureContainer from '../PictureContainer';
 
 class IndexPage extends React.Component {
 
   render() {
     return (
       <div>
-         <PictureBox></PictureBox>
+         <PictureContainer></PictureContainer>
          <div>122222333</div>
       </div>
       );
