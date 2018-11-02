@@ -11,7 +11,7 @@
     "babel-plugin-import": "^1.10.0",
     "dva": "^2.4.1",
     "dva-loading": "^2.0.6",
-    "less": "^3.8.1",
+    "less": "^2.7.3",
     "less-loader": "^4.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

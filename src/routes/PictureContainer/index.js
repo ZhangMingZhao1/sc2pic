@@ -24,16 +24,14 @@ class PictureContainer extends React.Component {
 
   render() {
     // console.log(typeof this.props.data);
-    console.log(this.props.data);
+    // console.log(this.props.data);
     let imgBox;
     if(this.props.data) {
-      console.log(this.props.data[0].key);
+      // console.log(this.props.data[0].key);
       imgBox = this.props.data.map( (v,k) => (<PictureBox key={v.key} picSrc={v.key}></PictureBox>))
-      console.log(imgBox);
+      // console.log(imgBox);
     }
     
-    
-
     // console.log('dddd');
     return (
       <div className={styles.picWaterFallBox}>
@@ -53,7 +51,7 @@ class PictureContainer extends React.Component {
       );
   }
   componentDidMount() {
-    console.log('did',this.props);
+    // console.log('did',this.props);
   }
 
 }
@@ -69,5 +67,6 @@ const mapStateToProps = (state) => {
     data: state.getPic.data
   }
 };
+
 export default connect(mapStateToProps)(PictureContainer);
 // export default PictureBox;

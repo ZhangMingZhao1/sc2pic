@@ -10,6 +10,7 @@ const app = dva(createLoading());
 
 // 3. Model
 app.model(require('./models/pictureData').default);
+app.model(require('./models/changeMenu').default);
 
 // 4. Router
 app.router(require('./router').default);
