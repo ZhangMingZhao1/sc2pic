@@ -1,10 +1,14 @@
 .roataqx_loader {
     width: 150px;
     height: 150px;
-    margin: 0 auto;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
     border-radius: 50%;
     perspective: 800px;
-    position: relative
+    position: absolute;
   }
   
   .roataqx_loader > div {
