@@ -5,6 +5,7 @@ import PictureContainer from '../PictureContainer';
 import Mheader from '../Mheader'
 import Mmenu from '../Mmenu';
 
+
 class IndexPage extends React.Component {
 
   render() {
@@ -12,6 +13,7 @@ class IndexPage extends React.Component {
       <div>
          <Mheader></Mheader>
          <Mmenu></Mmenu>
+         {/* <Loading></Loading> */}
       </div>
       );
   }

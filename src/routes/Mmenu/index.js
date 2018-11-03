@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { Menu } from 'antd';
+import { Menu} from 'antd';
 import { connect } from 'dva';
 import {
     BrowserRouter,
     Route,
     Link
   } from 'react-router-dom'
+import { Switch } from 'dva/router'
 import PictureContainer from '../PictureContainer';
 import Standing from '../Standing';
+
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -43,7 +45,11 @@ class Mmenu extends Component {
               <Link to="/standing">可视化排名</Link>
             </Menu.Item>
           </Menu>
-          <Route path="/picture" component={PictureContainer} /> 
+          <Switch>
+              <Route path="/" exact component={PictureContainer} />
+              <Route path="/picture" component={PictureContainer} /> 
+           </Switch>
+          
           <Route path="/standing" component={Standing} /> 
         </div>
      </BrowserRouter>
