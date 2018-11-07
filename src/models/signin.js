@@ -19,7 +19,8 @@ export default {
             type: 'change' ,
             payload: result
         });
-      },
+        return result.data;
+      }
     },
   
     reducers: {

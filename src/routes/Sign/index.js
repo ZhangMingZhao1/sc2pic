@@ -23,14 +23,12 @@ class Sign extends Component {
             userid: 0
         }
     }
-
-    // componentWillMount() {
-    //     if (localStorage.username) {
-    //         this.setState({ hasLogined: true });
-    //         this.setState({ userNickName: localStorage.username });
-    //     }
-    // };
-
+    componentWillMount() {
+		if(localStorage.username) {
+			this.setState({hasLogined:true});
+			this.setState({username:localStorage.username});
+		}
+    }
     setModalVisible = (value) => {
         this.setState({ modalVisible: value });
     }
@@ -83,9 +81,22 @@ class Sign extends Component {
         this.props.dispatch({
             type: 'signin/signin',
             payload: options
-        })
-        this.setState({hasLogined:true});
-        this.setModalVisible(false);
+        }).then(data=>{
+            console.log(data)
+            if(data.status == 1) {
+                this.setState({ 
+                    hasLogined: true ,
+                    username: formData.userName 
+                });
+                this.setModalVisible(false);
+                message.success("登录成功");
+                localStorage.username = formData.userName;
+            }else {
+                message.error("登录失败,请检查用户名和密码");
+            }
+            
+        });
+    
     }
 
     callback = (key) => {
@@ -98,7 +109,7 @@ class Sign extends Component {
 
     logout = () => {
         // localStorage.userid = '';
-        // localStorage.username = '';
+        localStorage.username = '';
         this.setState({ hasLogined: false });
     }
 
@@ -136,9 +147,10 @@ class Sign extends Component {
     render() {
         let { getFieldProps } = this.props.form;
         const { getFieldDecorator } = this.props.form;
-        let { modalVisible } = this.props;
+        let { modalVisible, status, username } = this.props;
 
-        const userShow = this.props.hasLogined
+        console.log('username', username);
+        const userShow = this.state.hasLogined
             ? <div className={styles.Mbutton}>
                 <Button type="primary" htmlType="button">{this.state.username}</Button>
                 <Button type="dashed" htmlType="button">个人中心</Button>
@@ -220,12 +232,12 @@ Sign.propTypes = {
 
 };
 
-// mS2P 返回对象 { data: state.data } 作用在组件上就好比 <PictureBox data={state.data} />
 const mapStateToProps = (state) => {
-    console.log("signState",state);
+    console.log("signState", state);
     return {
-
+        ...state.signin.data
     }
+
 };
 export default Sign = Form.create({})(connect(mapStateToProps)(Sign));
 // export default connect(mapStateToProps)(Mheader);
