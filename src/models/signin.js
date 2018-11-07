@@ -2,7 +2,7 @@
 import * as api from '../services/api';
 export default {
 
-    namespace: 'signIn',
+    namespace: 'signin',
   
     state: {},
   
@@ -13,15 +13,17 @@ export default {
   
     effects: {
       *signin({ payload }, { call, put }) {  // eslint-disable-line
-        const result = yield call(api.signIn(payload))
+        // console.log('payload',payload);
+        const result = yield api.doSignIn(payload)
         yield put({ 
-            type: 'signIn' 
+            type: 'change' ,
+            payload: result
         });
       },
     },
   
     reducers: {
-      signIn(state, action) {
+      change(state, action) {
         return { ...state, ...action.payload };
       },
     },
